@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <chrono>
-#include <print>
+#include <cstdio>
 #include <random>
 #include <vector>
 
@@ -19,13 +19,13 @@ void print(int N,int nWords, const std::vector<uint32_t>& matA,const std::vector
 
 int main(int argc,char* argv []) {
     if (argc < 3) {
-        std::println("Faltan parametros");
+        std::puts("Faltan parametros");
         return 1;
     }
     int n = std::stoi(argv[1]); 
     int m = std::stoi(argv[2]);
     if (n <= 0 || m<= 0) {
-        std::println("valores incorrectos");
+        std::puts("valores incorrectos");
         return 1;
     }
     // std::println("-----------------Lights Out {}X{}-----------------",n,n);
@@ -65,11 +65,11 @@ void benchmark(int n,  unsigned seed ,PrintFn PRINT) {
 }
 
 void print(int n, int N, double elapsed, bool ok, bool solEmpty) {
-    if(ok) std::println("{}   {:.17}", n, elapsed );
+    if(ok) printf("%d   %.17g\n", n, elapsed);
 }
 
 // void print(int n, int N, double elapsed, bool ok, bool solEmpty) {
-//     std::print("Grid {:2}×{:2}  N={:4}  Tiempo: %{:.4f} ms  Solución: {}\n",
+//     printf("Grid %2d×%2d  N=%4d  Tiempo: %.4f ms  Solución: %s\n",
 //            n, n, N, elapsed, ok ? "OK" : (solEmpty ? "sin solución" : "ERROR"));
 // }
 
@@ -78,14 +78,14 @@ void print(int n, int N, double elapsed, bool ok, bool solEmpty) {
 //     for (int rr  = 0;rr < N; rr++){
 //         for (int cc  = 0;cc < N; cc++){
 //             int bit = (matA[rr * nWords + cc / 32] >> (cc % 32)) & 1u;
-//             std::print("{:2}",bit);
+//             printf("%2d", bit);
 //         }
-//         std::println();
+//         printf("\n");
 //     }
-//     std::println("b = ");
-//     for (int rr = 0; rr < N; rr++) std::print("{} ", b[rr]);
-//     std::println("SOLUCION = ");
+//     printf("b = \n");
+//     for (int rr = 0; rr < N; rr++) printf("%d ", b[rr]);
+//     printf("SOLUCION = \n");
 
-//     for (int rr = 0; rr < N; rr++) std::print("{} ", sol[rr]);
+//     for (int rr = 0; rr < N; rr++) printf("%d ", sol[rr]);
 // }
 
